@@ -1,0 +1,42 @@
+{
+  "name": "traveler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "configuration",
+    "travel",
+    "voyage",
+    "travel-guide"
+  ],
+  "author": "bendakir oussama",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.7.11",
+    "del": "^1.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-minify-css": "1.2.4",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "scrollreveal": "^3.3.6"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.0.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-uglify-es": "^1.0.4"
+  }
+}
