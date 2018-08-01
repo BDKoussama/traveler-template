@@ -7,18 +7,27 @@ nav
     flex-direction: row
     justify-content: space-between
     align-items: center
-    padding: 0px 10px
     .menu
         height: 20px 
+        z-index: 111
         .first,.second,.third
             height: 2px
             width: 30px
-            background: $black
+            background: $white
             display: block
             border-radius: 2px 
             margin: 3px  
+            transition: all 0.3s ease-in-out
         .second
             width: 20px
+    &:hover
+        .first
+            transform: translateY(5px) rotate(45deg)
+        .third
+            transform: translateY(-5px) rotate(-45deg)
+        .second
+            transform: translateX(-20px)
+            opacity: 0
     .left-nav
         height: 50px
         display: flex 

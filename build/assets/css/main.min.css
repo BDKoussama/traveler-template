@@ -385,19 +385,27 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 0px 10px; }
+  align-items: center; }
   nav .menu {
-    height: 20px; }
+    height: 20px;
+    z-index: 111; }
     nav .menu .first, nav .menu .second, nav .menu .third {
       height: 2px;
       width: 30px;
-      background: #020202;
+      background: #ffffff;
       display: block;
       border-radius: 2px;
-      margin: 3px; }
+      margin: 3px;
+      transition: all 0.3s ease-in-out; }
     nav .menu .second {
       width: 20px; }
+  nav:hover .first {
+    transform: translateY(5px) rotate(45deg); }
+  nav:hover .third {
+    transform: translateY(-5px) rotate(-45deg); }
+  nav:hover .second {
+    transform: translateX(-20px);
+    opacity: 0; }
   nav .left-nav {
     height: 50px;
     display: flex;
@@ -478,7 +486,7 @@ nav {
   grid-row: 3/4;
   margin: 10px 0px;
   height: 30px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.80rem;
   color: #020202; }
 
@@ -508,6 +516,20 @@ nav {
 
 .social-media-icon {
   margin: 0px 7px; }
+
+.modal {
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; }
+
+.modal-content {
+  width: 50%;
+  background: #020202;
+  height: 100%; }
 
 .flex-video {
   height: 0;
