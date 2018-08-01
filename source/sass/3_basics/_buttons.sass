@@ -3,25 +3,52 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"]
-  display: inline-block
-  padding: 20px 60px
-  color: black
+  padding: 8px 30px
+  color: $black
   text-align: center
+  position: relative
   font-size: 14px
   font-weight: 600
+  letter-spacing: 0.1em
   text-transform: uppercase
   text-decoration: none
   white-space: nowrap
-  background-color: white
-  border-radius: 4px
+  border: 1px solid $black
   cursor: pointer
   box-sizing: border-box
-  transition: all 0.2s ease
-
+  transition: color 0.3s ease-in-out
+  margin: 20px 0px 
   &:hover,
   &:active,
   &:focus
-
     outline: 0
-    transform: scale(1.01)
-    transform: translateY(3px)
+    color: $white
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    z-index: -10 !important
+    height: 100%
+    width: 0%
+    background: $black
+    animation-delay: 0.1s 
+    animation-direction: alternate
+    animation-fill-mode: both
+    animation-timing-function: cubic-bezier(0.4, 0, 0.38, 1.04)
+    animation-duration: 0.7s 
+    animation-name: slideout
+  &:hover::after
+        animation-name: slidein
+
+@keyframes slidein 
+    0%
+      width: 0%
+    100%
+      width: 100%
+@keyframes slideout
+    0%
+      width: 100%
+    100%
+      width: 0%

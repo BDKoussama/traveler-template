@@ -1,2 +1,2 @@
-# Website Project Starter Kit
+# Traveler Template
 

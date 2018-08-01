@@ -1,0 +1,88 @@
+.main-container
+    position: relative
+    height: 100vh
+.grid
+    display: grid
+    grid-template-rows: none
+    grid-template-columns: repeat(3 , 1fr)
+.vertical-lines
+    position: absolute
+    top: 0
+    z-index: -10
+    height: 100%
+    width: 100%
+    .line
+        height: 100%
+        width: 1px 
+        background: $gray
+        &:nth-child(-n+2)
+            opacity: 0
+.main-content
+    height: 100%
+    width: 100%
+.slider-image
+    grid-column: 1/2
+    position: relative
+.img-title
+    position: absolute
+    top: 15%
+    transform: rotate(-90deg)
+    left: auto
+    right: -15%
+    h3 
+        color: $white
+        letter-spacing: 0.1em
+        font-family: 'Helvetica Neue', sans-serif
+.product
+    grid-column: 1/2
+    grid-row: 2/3
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+.play-video
+    height: 60px 
+    width: 60px 
+    border-radius: 50%
+    background: $black
+    margin: 15em auto 
+    display: flex
+    justify-content: center
+    align-items: center
+    grid-column: 2/3
+    grid-row: 2/3
+.product-title
+    margin: 20px 0px
+.slider-index
+    grid-column: 1/2
+    grid-row: 3/4
+    margin: 10px 0px
+    height: 30px
+    font-weight: 800
+    font-size: 0.80rem
+    color: $black
+.slider-index-current,.slider-index-total
+    position: relative
+.slider-index-total
+    margin: 0 0 0 5.5em
+    &::before
+        content: ''
+        display: block
+        position: absolute
+        height: 3px 
+        width: 5em
+        background-color: $black
+        top: calc(50% - 1.5px)
+        right: calc(100% + 0.4em) 
+.social-media
+    grid-column: 2/3
+    grid-row: 3/4
+    height: 30px 
+    margin: 10px 0px
+    display: flex
+    align-items: center
+    justify-content: flex-end
+.social-media-icon
+    margin: 0px 7px
+
+
