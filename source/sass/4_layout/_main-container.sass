@@ -1,6 +1,37 @@
 .main-container
     position: relative
     height: 100vh
+    overflow: hidden
+.main-content
+    grid-area: 1 / 1 / 4 / 4
+    display: grid
+    grid-template-columns: repeat(3 , 1fr)
+    grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]
+    grid-template-areas: "slider-image ... ..." "slider-image product video" "slider-image ... ..."
+.grid
+    display: grid
+    grid-template-columns: repeat(3 , 1fr)
+    grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]
+    grid-template-areas: "... header header" "... main-content main-content" "... slider-nav social-media"
+.header
+    grid-area: header
+    display: flex
+    align-items: center
+    padding: 1em 1.5em
+    z-index: 100
+.covers
+    position: absolute
+    height: 100%
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(3 , 1fr)
+.cover
+    z-index: 3000
+    background: $white
+    transition: all 0.4s ease-in-out
+    width: 0%
+.cover-3
+    border-left: 1px solid $gray
 .hidden
     position: absolute
     overflow: hidden
@@ -13,10 +44,6 @@
     height: 1rem
     fill: $black
     margin: 0 0.5em
-.grid
-    display: grid
-    grid-template-rows: none
-    grid-template-columns: repeat(3 , 1fr)
 .vertical-lines
     position: absolute
     top: 0
@@ -29,11 +56,8 @@
         background: $gray
         &:nth-child(-n+2)
             opacity: 0
-.main-content
-    height: 100%
-    width: 100%
 .slider-image
-    grid-column: 1/2
+    grid-area: slider-image
     position: relative
 .img-title
     position: absolute
@@ -46,13 +70,15 @@
         letter-spacing: 0.1em
         font-family: 'Helvetica Neue', sans-serif
 .product
-    grid-column: 1/2
-    grid-row: 2/3
+    grid-area: product
+    z-index: 100
     display: flex
     flex-direction: column
+    padding: 1em 1.5em
     align-items: flex-start
     justify-content: center
 .play-video
+    grid-area: video
     height: 60px 
     width: 60px 
     border-radius: 50%
@@ -61,22 +87,21 @@
     display: flex
     justify-content: center
     align-items: center
-    grid-column: 2/3
-    grid-row: 2/3
 .product-title
     margin: 20px 0px
 .slider-index
-    grid-column: 1/2
-    grid-row: 3/4
-    margin: 10px 0px
-    height: 30px
+    grid-area: slider-nav
+    padding: 1em 1.5em 
+    //height: 30px
     font-weight: 700
     font-size: 0.80rem
+    display: flex
+    align-items: center
     color: $black
 .slider-index-current,.slider-index-total
     position: relative
 .slider-index-total
-    margin: 0 0 0 5.5em
+    margin: 0 0 0 6em
     &::before
         content: ''
         display: block
@@ -87,15 +112,15 @@
         top: calc(50% - 1.5px)
         right: calc(100% + 0.4em) 
 .social-media
-    grid-column: 2/3
-    grid-row: 3/4
-    height: 30px 
-    margin: 10px 0px
+    grid-area: social-media
+    //height: 30px 
+    padding: 1em 1.5em 
     display: flex
     align-items: center
     justify-content: flex-end
+    font-size: 0.80rem
 .social-media-icon
-    margin: 0px 7px
+    margin: 0px 8px
 .modal
     position: absolute
     top: 0
