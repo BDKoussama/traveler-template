@@ -5,16 +5,19 @@ var autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     del = require('del'),
     gulp = require('gulp'),
+    babel = require('gulp-babel'),
     minifycss = require('gulp-minify-css'),
+    minifyJs = require('gulp-minify'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
+    postcss      = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     rename = require('gulp-rename'),
-    uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
     images = require('gulp-imagemin'),
     browserSync = require('browser-sync').create();
-
-
+     
 // paths
 var styleSrc = 'source/sass/**/*.sass',
     styleDest = 'build/assets/css/',
@@ -24,7 +27,6 @@ var styleSrc = 'source/sass/**/*.sass',
     vendorDest = 'build/assets/js/',
     scriptSrc = 'source/js/*.js',
     scriptDest = 'build/assets/js/';
-
 
 
 // --------------------------------------------
@@ -39,13 +41,14 @@ gulp.task('sass', function() {
         .pipe(sass({
             style: 'compressed'
         }))
+        .pipe(postcss([ autoprefixer({ browsers: 'last 2 versions, > 2%' })]))
         .pipe(rename({
             basename: 'main',
             suffix: '.min'
           }))
-
         .pipe(gulp.dest('build/assets/css'));
 });
+
 
 gulp.task('images', function() {
     gulp.src('source/img/*')
@@ -58,6 +61,7 @@ gulp.task('scripts', function() {
     gulp.src('source/js/*.js')
         .pipe(plumber())
         .pipe(uglify())
+        .pipe(minifyJs())
         .pipe(gulp.dest('build/assets/js'));
 });
 
@@ -90,7 +94,7 @@ gulp.task('watch', function(){
     gulp.watch(styleSrc,['sass']);
     gulp.watch(scriptSrc,['scripts']);
     gulp.watch(vendorSrc,['vendors']);
-    gulp.watch(['build/*.html', 'build/assets/css/*.css', 'build/assets/js/*.js', 'build/assets/js/vendors/*.js']).on('change', browserSync.reload);
+    gulp.watch(['build/*.html', 'build/assets/css/*.css','build/assets/js/*.js', 'build/assets/js/vendors/*.js']).on('change', browserSync.reload);
 
 });
 

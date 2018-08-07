@@ -2,12 +2,21 @@
     position: relative
     height: 100vh
     overflow: hidden
+.current--section
+    pointer-events: auto
+    z-index: 300
 .main-content
     grid-area: 1 / 1 / 4 / 4
     display: grid
+    opacity: 1
     grid-template-columns: repeat(3 , 1fr)
     grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]
     grid-template-areas: "slider-image ... ..." "slider-image product video" "slider-image ... ..."
+
+.main-content:not(.current--section) .slider-image,
+.main-content:not(.current--section) .product,
+.main-content:not(.current--section) .play-video
+    opacity: 0
 .grid
     display: grid
     grid-template-columns: repeat(3 , 1fr)
@@ -20,7 +29,7 @@
     display: grid
     grid-template-columns: repeat(3 , 1fr)
 .cover
-    z-index: 3000
+    z-index: 999
     background: $white
     transition: all 0.4s ease-in-out
     width: 0%
@@ -43,13 +52,20 @@
     position: relative
 .img-title
     position: absolute
-    top: 15%
-    transform: rotate(-90deg)
+    top: 0 
     left: auto
-    right: -15%
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    right: 0 
+    margin: 2em 1em
     h3 
+        writing-mode: vertical-rl
+        text-transform: capitalize
+        transform: rotate(180deg)
         color: $white
         letter-spacing: 0.1em
+        line-height: 0.5em
         font-family: 'Helvetica Neue', sans-serif
 .product
     grid-area: product
@@ -69,13 +85,18 @@
     display: flex
     justify-content: center
     align-items: center
+.slider-image--inner
+    height: 100%
+    width: 100%
+    background-size: cover
+    background-position: 50% 50%
 .product-title
     margin: 20px 0px
+    text-transform: capitalize
+.nav-buttons
+    display: flex
+    align-items: center
 .slider-index
-    grid-area: slider-nav
-    padding: 1em 1.5em 
-    font-weight: 700
-    font-size: 0.80rem
     display: flex
     align-items: center
     color: $black
@@ -99,6 +120,17 @@
     align-items: center
     justify-content: flex-end
     font-size: 0.80rem
+.next-button,.previous-button
+    margin: 0 1em
+.slider-nav
+    z-index: 300
+    grid-area: slider-nav
+    padding: 1em 1.5em 
+    font-weight: 700
+    font-size: 0.80rem
+    display: flex
+    flex-direction: row
+    justify-content: space-between
 .social-media-icon
     margin: 0px 8px
 .modal
@@ -107,6 +139,7 @@
     background: rgba(0, 0, 0 ,0.8)
     height: 100%
     width: 100%
+    z-index: 3000 !important
     display: none
     justify-content: flex-end
 .modal-content

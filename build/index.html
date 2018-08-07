@@ -20,6 +20,16 @@
 			c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485
 			c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z" />
         </symbol>
+        <symbol id="arrow__left-icon" viewBox="0 0 477.175 477.175">
+            <title>previous arrow</title>
+            <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225   c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"
+                fill="#1E201D" />
+        </symbol>
+        <symbol id="arrow__right-icon" viewBox="0 0 129 129">
+            <title>next arrow</title>
+            <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"
+                fill="#1E201D" />
+        </symbol>
         <symbol id="search-icon" viewBox="0 0 451 451">
             <title>search</title>
             <path d="M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3
@@ -57,21 +67,16 @@
 		    L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
 		    c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z" />
         </symbol>
-        <symbol id="rightArrow-icon" viewBox="0 0 31.49 31.49">
-            <title>right arrow</title>
-            <path style="fill:#1E201D;" d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
-	        C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
-	        c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z" />
-        </symbol>
     </svg>
     <main>
+        <!-- main container -->
         <div class="main-container grid">
-            <section class="main-content">
+            <section class="main-content current--section">
                 <div class="slider-image">
                     <div class="img-title">
-                        <h3>Paris, France</h3>
+                        <h3>Paris , France</h3>
                     </div>
-                    <img src="./assets/img/paris.jpg" alt="paris,france" width="100%" height="100%">
+                    <div class="slider-image--inner" style="background-image: url(./assets/img/paris.jpg)"></div>
                 </div>
                 <div class="product">
                     <h2 class="product-title">Arch of Triumph</h2>
@@ -85,6 +90,106 @@
                     </svg>
                 </div>
             </section>
+
+            <section class="main-content  ">
+                <div class="slider-image">
+                    <div class="img-title">
+                        <h3>Santorini, Greece</h3>
+                    </div>
+                    <div class="slider-image--inner" style="background-image: url(./assets/img/santorini.jpg)"></div>
+                </div>
+                <div class="product">
+                    <h2 class="product-title">Greek Islands</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium ex dui, at egestas eros ornare
+                        nec. Duis sagittis urna congue arcu blandit porta. Praesent at efficitur arcu.. </p>
+                    <a href="#" class="button">See More</a>
+                </div>
+                <div class="play-video">
+                    <svg class="icon play--icon">
+                        <use xlink:href="#play-icon"></use>
+                    </svg>
+                </div>
+            </section>
+            <section class="main-content ">
+                <div class="slider-image">
+                    <div class="img-title">
+                        <h3>Rome, Italy</h3>
+                    </div>
+                    <div class="slider-image--inner" style="background-image: url(./assets/img/rome.jpg)"></div>
+
+                </div>
+                <div class="product">
+                    <h2 class="product-title">Collesium of rome</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium ex dui, at egestas eros ornare
+                        nec. Duis sagittis urna congue arcu blandit porta. Praesent at efficitur arcu.. </p>
+                    <a href="http://localhost:3000/index2.html" class="button">See More </a>
+                </div>
+                <div class="play-video">
+                    <svg class="icon play--icon">
+                        <use xlink:href="#play-icon"></use>
+                    </svg>
+                </div>
+            </section>
+            <section class="main-content">
+                <div class="slider-image">
+                    <div class="img-title">
+                        <h3>sea, iceland</h3>
+                    </div>
+                    <div class="slider-image--inner" style="background-image: url(./assets/img/iceland.jpg)"></div>
+
+                </div>
+                <div class="product">
+                    <h2 class="product-title">the black sand</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium ex dui, at egestas eros ornare
+                        nec. Duis sagittis urna congue arcu blandit porta. Praesent at efficitur arcu.. </p>
+                    <a href="" class="button">See More </a>
+                </div>
+                <div class="play-video">
+                    <svg class="icon play--icon">
+                        <use xlink:href="#play-icon"></use>
+                    </svg>
+                </div>
+            </section>
+            <section class="main-content ">
+                <div class="slider-image">
+                    <div class="img-title">
+                        <h3>utah, Usa</h3>
+                    </div>
+                    <div class="slider-image--inner" style="background-image: url(./assets/img/desert.jpg)"></div>
+                </div>
+                <div class="product">
+                    <h2 class="product-title">Grand desert</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium ex dui, at egestas eros ornare
+                        nec. Duis sagittis urna congue arcu blandit porta. Praesent at efficitur arcu.. </p>
+                    <a href="" class="button">See More </a>
+                </div>
+                <div class="play-video">
+                    <svg class="icon play--icon">
+                        <use xlink:href="#play-icon"></use>
+                    </svg>
+                </div>
+            </section>
+            <section class="main-content">
+                <div class="slider-image">
+                    <div class="img-title">
+                        <h3>venice, italy</h3>
+                    </div>
+                    <div class="slider-image--inner" style="background-image: url(./assets/img/venice.jpg)"></div>
+                </div>
+                <div class="product">
+                    <h2 class="product-title">city of love</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium ex dui, at egestas eros ornare
+                        nec. Duis sagittis urna congue arcu blandit porta. Praesent at efficitur arcu.. </p>
+                    <a href="" class="button">See More </a>
+                </div>
+                <div class="play-video">
+                    <svg class="icon play--icon">
+                        <use xlink:href="#play-icon"></use>
+                    </svg>
+                </div>
+            </section>
+
+            <!--Header -->
             <header class="header">
                 <nav>
                     <div class="left-nav">
@@ -100,11 +205,32 @@
                     </div>
                 </nav>
             </header>
-            <div class="slider-index">
-                <span class="slider-index-current">01</span>
-                <span class="slider-index-total">07</span>
+            <!-- close Header -->
+            <!-- slider Index -->
+            <div class="slider-nav">
+                <div class="slider-index">
+                    <span class="slider-index-current"><span class="slider-index-inner">01</span></span>
+                    <span class="slider-index-total">07</span>
+                </div>
+                <div class="nav-buttons">
+                    <span>
+                        <a class="previous-button" href="#">
+                            <svg class="icon">
+                                <use xlink:href="#arrow__left-icon"></use>
+                            </svg>
+                        </a>
+                    </span>
+                    <span>
+                        <a class="next-button" href="#">
+                            <svg class="icon">
+                                <use xlink:href="#arrow__right-icon"></use>
+                            </svg>
+                        </a>
+                    </span>
+                </div>
             </div>
-
+            <!-- close slider Index -->
+            <!-- social media -->
             <div class="social-media">
                 <svg class="icon">
                     <use xlink:href="#facebook-icon"></use>
@@ -116,17 +242,20 @@
                     <use xlink:href="#twitter-icon"></use>
                 </svg>
             </div>
+            <!-- close social media -->
+            <!-- modal -->
             <div class="modal">
                 <div class="modal-content"></div>
             </div>
+            <!-- close modal -->
             <div class="covers">
-                    <div class="cover cover-1"></div>
-                    <div class="cover cover-2"></div>
-                    <div class="cover cover-3"></div>
+                <div class="cover cover-1"></div>
+                <div class="cover cover-2"></div>
+                <div class="cover cover-3"></div>
             </div>
         </div>
+        <!-- close main-container -->
     </main>
-    <!-- close-container -->
     <script src="./assets/js/vendors.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
