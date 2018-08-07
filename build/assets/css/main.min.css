@@ -1,5 +1,4 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize * */
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,900");
 @import url('href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900"');
 html {
   font-family: sans-serif;
@@ -198,15 +197,6 @@ body {
   -webkit-text-size-adjust: 100%;
   font-family: 'Montserrat', sans-serif; }
 
-.wrapper {
-  width: 100%;
-  max-width: 800px;
-  grid-column: 2/4;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]; }
-
 ul {
   margin: 0;
   padding: 0; }
@@ -363,18 +353,12 @@ p {
   line-height: 1.5;
   letter-spacing: 0.01em; }
 
-em {
-  font-style: italic; }
-
-strong {
-  font-weight: bold; }
-
-hr {
-  border: solid #ddd;
-  border-width: 1px 0 0;
-  clear: both;
-  margin: 10px 0 30px;
-  height: 0; }
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 1em 1.5em;
+  z-index: 100; }
 
 nav {
   width: 100%;
@@ -427,13 +411,6 @@ nav {
   grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line];
   grid-template-areas: "... header header" "... main-content main-content" "... slider-nav social-media"; }
 
-.header {
-  grid-area: header;
-  display: flex;
-  align-items: center;
-  padding: 1em 1.5em;
-  z-index: 100; }
-
 .covers {
   position: absolute;
   height: 100%;
@@ -463,19 +440,6 @@ nav {
   height: 1rem;
   fill: #020202;
   margin: 0 0.5em; }
-
-.vertical-lines {
-  position: absolute;
-  top: 0;
-  z-index: -10;
-  height: 100%;
-  width: 100%; }
-  .vertical-lines .line {
-    height: 100%;
-    width: 1px;
-    background: #B7B7B7; }
-    .vertical-lines .line:nth-child(-n+2) {
-      opacity: 0; }
 
 .slider-image {
   grid-area: slider-image;
@@ -563,20 +527,3 @@ nav {
   width: 50%;
   background: #020202;
   height: 100%; }
-
-.flex-video {
-  height: 0;
-  margin-bottom: 0.88889rem;
-  overflow: hidden;
-  padding-bottom: 56%;
-  position: relative; }
-
-.flex-video iframe,
-.flex-video object,
-.flex-video embed,
-.flex-video video {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  left: 0; }
