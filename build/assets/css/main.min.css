@@ -365,7 +365,7 @@ h1, h2, h3, h4, h5, h6 {
       font-size: 22px; } }
 
 .big, h4 {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.38; }
   @media only screen and (max-width: 680px) {
     .big, h4 {
@@ -376,7 +376,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2; }
 
 p {
-  margin: 0 0 20px 0;
+  margin: 0 0 0 0;
   font-weight: 300;
   font-size: 14px;
   line-height: 1.5;
@@ -391,7 +391,7 @@ p {
       -ms-flex-align: center;
           align-items: center;
   padding: 1em 1.5em;
-  z-index: 300; }
+  z-index: 999 !important; }
 
 nav {
   width: 100%;
@@ -415,17 +415,21 @@ nav {
     display: block;
     border-radius: 2px;
     margin: 3px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; }
   nav .menu .second {
     width: 20px; }
-  nav:hover .first {
+  nav .menu:hover .second {
+    width: 30px; }
+  nav .menu.clicked .first {
+    background: #ffffff;
     -webkit-transform: translateY(5px) rotate(45deg);
             transform: translateY(5px) rotate(45deg); }
-  nav:hover .third {
+  nav .menu.clicked .third {
+    background: #ffffff;
     -webkit-transform: translateY(-5px) rotate(-45deg);
             transform: translateY(-5px) rotate(-45deg); }
-  nav:hover .second {
+  nav .menu.clicked .second {
     -webkit-transform: translateX(-20px);
             transform: translateX(-20px);
     opacity: 0; }
@@ -455,18 +459,20 @@ nav {
 
 .current--section {
   pointer-events: auto;
-  z-index: 300; }
+  z-index: 100;
+  opacity: 1 !important; }
 
 .main-content {
   grid-area: 1 / 1 / 4 / 4;
   display: grid;
-  opacity: 1;
+  opacity: 0;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line];
   grid-template-areas: "slider-image ... ..." "slider-image product video" "slider-image ... ..."; }
 
 .main-content:not(.current--section) .slider-image,
 .main-content:not(.current--section) .product,
+.main-content:not(.current--section) .product-title,
 .main-content:not(.current--section) .play-video {
   opacity: 0; }
 
@@ -484,7 +490,7 @@ nav {
   grid-template-columns: repeat(3, 1fr); }
 
 .cover {
-  z-index: 999;
+  z-index: 200;
   background: #ffffff;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -509,7 +515,8 @@ nav {
 
 .slider-image {
   grid-area: slider-image;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .img-title {
   position: absolute;
@@ -555,6 +562,8 @@ nav {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
+  .product span {
+    display: inline-block; }
 
 .play-video {
   grid-area: video;
@@ -580,8 +589,25 @@ nav {
   background-position: 50% 50%; }
 
 .product-title {
-  margin: 20px 0px;
+  margin: 10px 0px;
+  position: relative;
+  padding-right: 10px;
+  overflow: hidden; }
+
+.subtitle-wrapper {
+  position: relative;
+  overflow: hidden; }
+
+.sub-title {
+  overflow: hidden;
+  position: relative;
+  color: #B7B7B7;
   text-transform: capitalize; }
+
+.product-description {
+  position: relative;
+  margin: 10px 0px;
+  overflow: hidden; }
 
 .nav-buttons {
   display: -webkit-box;
@@ -598,7 +624,9 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #020202; }
+  color: #020202;
+  position: relative;
+  overflow: hidden; }
 
 .slider-index-current, .slider-index-total {
   position: relative; }
@@ -633,7 +661,7 @@ nav {
   margin: 0 1em; }
 
 .slider-nav {
-  z-index: 300;
+  z-index: 150;
   grid-area: slider-nav;
   padding: 1em 1.5em;
   font-weight: 700;
@@ -655,16 +683,22 @@ nav {
 .modal {
   position: absolute;
   top: 0;
-  background: rgba(0, 0, 0, 0.8);
+  right: 0;
   height: 100%;
-  width: 100%;
-  z-index: 3000 !important;
-  display: none;
+  width: 0%;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: flex-end; }
+          justify-content: flex-end;
+  z-index: 500; }
 
 .modal-content {
-  width: 50%;
+  width: 0%;
   background: #020202;
   height: 100%; }

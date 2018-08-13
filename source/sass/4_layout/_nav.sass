@@ -3,7 +3,7 @@
     display: flex
     align-items: center
     padding: 1em 1.5em
-    z-index: 300
+    z-index: 999 !important
 nav 
     width: 100%
     display: flex
@@ -11,25 +11,29 @@ nav
     justify-content: space-between
     align-items: center
     .menu
-        //height: 20px 
         .first,.second,.third
             height: 2px
             width: 30px
             background: $black
-            display: block
+            display: block 
             border-radius: 2px 
             margin: 3px  
-            transition: all 0.3s ease-in-out
+            transition: all 0.4s ease-in-out
         .second
             width: 20px
-    &:hover
-        .first
-            transform: translateY(5px) rotate(45deg)
-        .third
-            transform: translateY(-5px) rotate(-45deg)
-        .second
-            transform: translateX(-20px)
-            opacity: 0
+        &:hover
+            .second
+                width: 30px
+        &.clicked
+            .first
+                background: $white
+                transform: translateY(5px) rotate(45deg)
+            .third
+                background: $white
+                transform: translateY(-5px) rotate(-45deg)
+            .second
+                transform: translateX(-20px)
+                opacity: 0
     .left-nav
         display: flex 
         flex-direction: row

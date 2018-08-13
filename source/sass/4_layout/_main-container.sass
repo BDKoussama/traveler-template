@@ -4,17 +4,19 @@
     overflow: hidden
 .current--section
     pointer-events: auto
-    z-index: 300
+    z-index: 100
+    opacity: 1 !important
 .main-content
     grid-area: 1 / 1 / 4 / 4
     display: grid
-    opacity: 1
+    opacity: 0
     grid-template-columns: repeat(3 , 1fr)
     grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]
     grid-template-areas: "slider-image ... ..." "slider-image product video" "slider-image ... ..."
 
 .main-content:not(.current--section) .slider-image,
 .main-content:not(.current--section) .product,
+.main-content:not(.current--section) .product-title,
 .main-content:not(.current--section) .play-video
     opacity: 0
 .grid
@@ -29,7 +31,7 @@
     display: grid
     grid-template-columns: repeat(3 , 1fr)
 .cover
-    z-index: 999
+    z-index: 200
     background: $white
     transition: all 0.4s ease-in-out
     width: 0%
@@ -50,6 +52,7 @@
 .slider-image
     grid-area: slider-image
     position: relative
+    overflow: hidden
 .img-title
     position: absolute
     top: 0 
@@ -75,6 +78,8 @@
     padding: 1em 1.5em
     align-items: flex-start
     justify-content: center
+    span 
+       display: inline-block      
 .play-video
     grid-area: video
     height: 60px 
@@ -91,8 +96,22 @@
     background-size: cover
     background-position: 50% 50%
 .product-title
-    margin: 20px 0px
+    margin: 10px 0px
+    position: relative
+    padding-right: 10px
+    overflow: hidden
+.subtitle-wrapper
+    position: relative
+    overflow: hidden
+.sub-title
+    overflow: hidden
+    position: relative
+    color: $gray
     text-transform: capitalize
+.product-description
+    position: relative
+    margin: 10px 0px
+    overflow: hidden
 .nav-buttons
     display: flex
     align-items: center
@@ -100,8 +119,11 @@
     display: flex
     align-items: center
     color: $black
+    position: relative
+    overflow: hidden
 .slider-index-current,.slider-index-total
     position: relative
+    //overflow: hidden
 .slider-index-total
     margin: 0 0 0 6em
     &::before
@@ -123,7 +145,7 @@
 .next-button,.previous-button
     margin: 0 1em
 .slider-nav
-    z-index: 300
+    z-index: 150
     grid-area: slider-nav
     padding: 1em 1.5em 
     font-weight: 700
@@ -136,13 +158,16 @@
 .modal
     position: absolute
     top: 0
-    background: rgba(0, 0, 0 ,0.8)
+    right: 0
     height: 100%
-    width: 100%
-    z-index: 3000 !important
-    display: none
+    width: 0%
+    transition: all 0.2s ease-in-out
+    display: flex
+    background: rgba(0, 0, 0 ,0.8)
+    opacity: 1
     justify-content: flex-end
+    z-index: 500
 .modal-content
-    width: 50%
+    width: 0%
     background: $black
     height: 100%
