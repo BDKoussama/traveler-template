@@ -7,36 +7,34 @@
     z-index: 100
     opacity: 1 !important
 .main-content
-    grid-area: 1 / 1 / 4 / 4
+    grid-area: 1 / 1 / 5 / 3
     display: grid
     opacity: 0
-    grid-template-columns: repeat(3 , 1fr)
-    grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]
-    grid-template-areas: "slider-image ... ..." "slider-image product video" "slider-image ... ..."
-
+    grid-template-columns: repeat(2 , 1fr)
+    grid-template-rows: 10%  auto 10% 
+    grid-template-areas: "slider-image ..." "slider-image product " "slider-image ... "
 .main-content:not(.current--section) .slider-image,
 .main-content:not(.current--section) .product,
-.main-content:not(.current--section) .product-title,
-.main-content:not(.current--section) .play-video
+.main-content:not(.current--section) .product-title
     opacity: 0
+
 .grid
     display: grid
-    grid-template-columns: repeat(3 , 1fr)
-    grid-template-rows: [row1-start] 10% [row1-end] auto [third-line] 10% [last-line]
-    grid-template-areas: "... header header" "... main-content main-content" "... slider-nav social-media"
+    grid-template-columns: repeat(2 , 1fr)
+    grid-template-rows:  10% auto 5% 10% 
+    grid-template-areas: "... header" "... main-content" "... navigation" "... footer"
+
 .covers
     position: absolute
     height: 100%
     width: 100%
     display: grid
-    grid-template-columns: repeat(3 , 1fr)
+    grid-template-columns: repeat(2 , 1fr)
 .cover
     z-index: 200
     background: $white
     transition: all 0.4s ease-in-out
     width: 0%
-.cover-3
-    border-left: 1px solid $gray
 .hidden
     position: absolute
     overflow: hidden
@@ -69,7 +67,13 @@
         color: $white
         letter-spacing: 0.1em
         line-height: 0.5em
-        font-family: 'Helvetica Neue', sans-serif
+        font-family: 'Helvetica Neue', sans-serif 
+.slider-image--inner
+    height: 100%
+    width: 100%
+    position: relative
+    background-size: cover
+    background-position: 50% 50%
 .product
     grid-area: product
     z-index: 100
@@ -78,43 +82,41 @@
     padding: 1em 1.5em
     align-items: flex-start
     justify-content: center
-    span 
-       display: inline-block      
-.play-video
-    grid-area: video
-    height: 60px 
-    width: 60px 
-    border-radius: 50%
-    background: $black
-    margin: 15em auto 
-    display: flex
-    justify-content: center
-    align-items: center
-.slider-image--inner
-    height: 100%
+.product-description
+    position: relative
+    margin: 10px 0px
+    max-width: 30em
     width: 100%
-    background-size: cover
-    background-position: 50% 50%
+    overflow: hidden
 .product-title
     margin: 10px 0px
     position: relative
+    letter-spacing: 0.1em
     padding-right: 10px
     overflow: hidden
-.subtitle-wrapper
+.letterWrapper
+    display: inline-block
     position: relative
     overflow: hidden
+    span 
+        display: inline-block
+        position: relative
+        padding: 0 2px
 .sub-title
     overflow: hidden
     position: relative
     color: $gray
     text-transform: capitalize
-.product-description
+.subtitle-wrapper
     position: relative
-    margin: 10px 0px
     overflow: hidden
-.nav-buttons
+.navigation
+    z-index: 150 !important
     display: flex
     align-items: center
+    grid-area: navigation
+.next-button,.previous-button
+    margin: 0 1em
 .slider-index
     display: flex
     align-items: center
@@ -136,25 +138,20 @@
         top: calc(50% - 1.5px)
         right: calc(100% + 0.4em) 
 .social-media
-    grid-area: social-media
-    padding: 1em 1.5em 
     display: flex
     align-items: center
     justify-content: flex-end
-    font-size: 0.80rem
-.next-button,.previous-button
-    margin: 0 1em
-.slider-nav
-    z-index: 150
-    grid-area: slider-nav
+.social-media-icon
+    margin: 0px 8px
+.footer
+    z-index: 150 
+    grid-area: footer
     padding: 1em 1.5em 
     font-weight: 700
     font-size: 0.80rem
     display: flex
     flex-direction: row
     justify-content: space-between
-.social-media-icon
-    margin: 0px 8px
 .modal
     position: absolute
     top: 0
@@ -169,5 +166,28 @@
     z-index: 500
 .modal-content
     width: 0%
+    opacity: 0
+    color: $white
     background: $black
     height: 100%
+.modal-menu
+    width: 100%
+    max-width: 250px  
+    margin: 5em 1.4em 
+    .icon 
+        fill: $white 
+.menu-list 
+    padding-left: 1em 
+    text-transform: capitalize 
+.list-item
+    margin: 1.6em 0em 
+    overflow: hidden
+    padding: 0.2em
+    position: relative
+    a
+        color: $white 
+        &:hover
+            color: $gray
+.contact-info
+    font-weight: 700
+    margin: 2em 0.3em         
