@@ -31,7 +31,7 @@ const animationSettings = {
         duration: 400,
         easing: 'easeInQuad',
         delay: !this.isAnimated ? 200 : 50,
-        width: !this.isAnimated ? ['0%', `50%`] : [`50%`, '0%'],
+        width: !this.isAnimated ? ['0%', `40%`] : [`40%`, '0%'],
         opacity: !this.isAnimated ? 1 : 0,
     },
     modalList: {
@@ -169,6 +169,7 @@ class Slider {
         this.DOM.sliders = Array.from(this.DOM.container.querySelectorAll('.main-content'), post => new Post(post));
         this.totalSliders = this.DOM.sliders.length;
         this.isClosed = true;
+        this.isAnimating = false ; 
         this.currentPosition = 0;
         this.initEvents();
     }
@@ -183,6 +184,8 @@ class Slider {
     }
     // get Slide position
     getPosition(direction) {
+        if(this.isAnimating) return ; 
+        this.isAnimating = true ; 
         this.currentSlide = this.DOM.sliders[this.currentPosition];
         let newPosition = this.currentPosition = direction === 'next' ?
             this.currentPosition < this.totalSliders - 1 ? this.currentPosition + 1 : 0 :
@@ -197,6 +200,7 @@ class Slider {
         Promise.all([this.currentSlide.hidePrevious(), newPost.showNext(), this.updatePostIndex(newPosition)]).then(() => {
             this.currentSlide.DOM.post.classList.remove('current--section');
             this.currentSlide = newPost;
+            this.isAnimating = false ; 
         });
     }
     // update Slide Index
