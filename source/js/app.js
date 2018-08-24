@@ -31,14 +31,13 @@ const animationSettings = {
         duration: 400,
         easing: 'easeInQuad',
         delay: !this.isAnimated ? 200 : 50,
-        width: !this.isAnimated ? ['0%', `40%`] : [`40%`, '0%'],
+        width: !this.isAnimated ? ['0%', `100%`] : [`100%`, '0%'],
         opacity: !this.isAnimated ? 1 : 0,
     },
     modalList: {
         duration: 500,
-        direction: 'forwards',
+        //direction: 'forwards',
         easing: 'easeInOutQuad',
-        elasticity: 200,
         delay: function (target, index) {
             return index * 80;
         },
@@ -48,6 +47,9 @@ const animationSettings = {
             duration: 1,
             delay: !this.isAnimated ? 200 : 600,
         },
+    },
+    contactInfo: {
+
     }
 }
 //----------------------------------------//
@@ -68,7 +70,7 @@ class Modal {
         // select modal menu 
         this.DOM.modalMenu = {
             contactInfo: this.DOM.modalContent.querySelector('.modal-menu .contact-info'),
-            listItems: [...this.DOM.modalContent.querySelectorAll('.modal-menu .menu-list > .list-item h3')]
+            listItems: [...this.DOM.modalContent.querySelectorAll('.modal-menu .menu-list > .list-item h2')]
         };
         this.isAnimated = false;
         // init the animation timeline 
@@ -96,12 +98,24 @@ class Modal {
             targets: this.DOM.modalMenu.listItems,
             duration: animationSettings.modalList.duration,
             direction: animationSettings.modalList.direction,
-            offset: `-=${animationSettings.modalContent.duration / 2}`,
+            offset: `-=${animationSettings.modalContent.duration / 2 }`,
             easing: animationSettings.modalList.easing,
             elasticity: animationSettings.modalList.elasticity,
             delay: animationSettings.modalList.delay,
             translateX: animationSettings.modalList.translateX,
             opacity: animationSettings.modalList.opacity,
+        }).add({
+            targets: this.DOM.modalMenu.contactInfo,
+            duration: 400,
+            offset: `-=${animationSettings.modalList.duration}`,
+            easing: 'easeInOutQuad',
+            delay: 100,
+            translateY: !this.isAnimated ? ['100%', 0] : [0, '100%'],
+            opacity: {
+                value: !this.isAnimated ? 1 : 0,
+                duration: 1,
+                delay: !this.isAnimated ? 200 : 600,
+            },
         });
 
         // init Events 
@@ -166,10 +180,10 @@ class Slider {
         // select slider indexes
         this.DOM.sliderIndex = this.DOM.container.querySelector('.slider-index .slider-index-inner');
         // select all Slides and initialize new Post ( slide )
-        this.DOM.sliders = Array.from(this.DOM.container.querySelectorAll('.main-content'), post => new Post(post));
+        this.DOM.sliders = Array.from(this.DOM.container.querySelectorAll('.slide'), post => new Post(post));
         this.totalSliders = this.DOM.sliders.length;
         this.isClosed = true;
-        this.isAnimating = false ; 
+        this.isAnimating = false;
         this.currentPosition = 0;
         this.initEvents();
     }
@@ -184,8 +198,8 @@ class Slider {
     }
     // get Slide position
     getPosition(direction) {
-        if(this.isAnimating) return ; 
-        this.isAnimating = true ; 
+        if (this.isAnimating) return;
+        this.isAnimating = true;
         this.currentSlide = this.DOM.sliders[this.currentPosition];
         let newPosition = this.currentPosition = direction === 'next' ?
             this.currentPosition < this.totalSliders - 1 ? this.currentPosition + 1 : 0 :
@@ -196,11 +210,11 @@ class Slider {
 
     // change new slide 
     changePost(newPost, newPosition) {
-        newPost.DOM.post.classList.add('current--section');
+        newPost.DOM.post.classList.add('active');
         Promise.all([this.currentSlide.hidePrevious(), newPost.showNext(), this.updatePostIndex(newPosition)]).then(() => {
-            this.currentSlide.DOM.post.classList.remove('current--section');
+            this.currentSlide.DOM.post.classList.remove('active');
             this.currentSlide = newPost;
-            this.isAnimating = false ; 
+            this.isAnimating = false;
         });
     }
     // update Slide Index

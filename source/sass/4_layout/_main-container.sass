@@ -2,20 +2,20 @@
     position: relative
     height: 100vh
     overflow: hidden
-.current--section
+.active
     pointer-events: auto
     z-index: 100
     opacity: 1 !important
-.main-content
+.slide
     grid-area: 1 / 1 / 5 / 3
     display: grid
     opacity: 0
     grid-template-columns: repeat(2 , 1fr)
     grid-template-rows: 10%  auto 10% 
     grid-template-areas: "slider-image ..." "slider-image product " "slider-image ... "
-.main-content:not(.current--section) .slider-image,
-.main-content:not(.current--section) .product,
-.main-content:not(.current--section) .product-title
+.slide:not(.active) .slider-image,
+.slide:not(.active) .product,
+.slide:not(.active) .product-title
     opacity: 0
 
 .grid
@@ -91,6 +91,7 @@
 .product-title
     margin: 10px 0px
     position: relative
+    color: #003459
     letter-spacing: 0.1em
     padding-right: 10px
     overflow: hidden
@@ -113,10 +114,16 @@
 .navigation
     z-index: 150 !important
     display: flex
+    position: relative
     align-items: center
+    justify-content: flex-start
     grid-area: navigation
 .next-button,.previous-button
-    margin: 0 1em
+    display: flex
+    margin: 0 0.8em
+    flex-direction: row 
+    align-items: center
+    justify-content: center
 .slider-index
     display: flex
     align-items: center
@@ -165,22 +172,23 @@
     justify-content: flex-end
     z-index: 500
 .modal-content
-    width: 0%
+    width: 100%
+    max-width: 50%
     opacity: 0
     color: $white
     background: $black
     height: 100%
 .modal-menu
     width: 100%
-    max-width: 250px  
-    margin: 5em 1.4em 
+    max-width: 300px  
+    margin: 5em 3em 
     .icon 
         fill: $white 
 .menu-list 
     padding-left: 1em 
     text-transform: capitalize 
 .list-item
-    margin: 1.6em 0em 
+    margin: 1.5em 0em 
     overflow: hidden
     padding: 0.2em
     position: relative
@@ -190,4 +198,35 @@
             color: $gray
 .contact-info
     font-weight: 700
-    margin: 2em 0.3em         
+    margin: 2em 0.3em 
+    opacity: 0        
+
+// media Queries 
+@media only screen and (max-width: 780px)
+    .grid
+        display: grid
+        grid-template-columns: 1fr
+        grid-template-rows:  10% auto 5% 10% 
+        grid-template-areas: "header" "main-content" "navigation" "footer"
+
+    .slide
+        grid-area: main-content
+        display: grid
+        opacity: 0
+        grid-template-columns: 1fr
+        grid-template-rows: 50% 50%
+        grid-template-areas: "product" "slider-image "
+    .slide:not(.active) .slider-image,
+    .slide:not(.active) .product,
+    .slide:not(.active) .product-title
+        opacity: 0
+    .product
+        padding: 0em 1.5em
+    .product-title
+        margin: 10px 0px
+    .product-description
+        max-width: 100%
+    .slider-image
+        margin: 0.5em 1.5em 
+    .modal-content
+        max-width: 100%
