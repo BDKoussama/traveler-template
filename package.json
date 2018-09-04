@@ -16,13 +16,16 @@
   "author": "bendakir oussama",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.7.11",
     "del": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "5.0.0",
-    "gulp-babel": "^7.0.1",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^4.1.0",
     "gulp-minify": "^3.1.0",
@@ -32,11 +35,14 @@
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
-    "scrollreveal": "^3.3.6"
+    "scrollreveal": "^3.3.6",
+    "webpack-stream": "^5.1.1"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0",
     "animejs": "^2.2.0",
     "autoprefixer": "^9.0.0",
+    "babel-loader": "^8.0.2",
     "charming": "^2.2.4",
     "gulp-postcss": "^7.0.1",
     "gulp-uglify-es": "^1.0.4"
