@@ -1,2 +1,2 @@
-# Traveler Template
+# Traveler SlideShow
 
