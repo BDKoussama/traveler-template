@@ -21,13 +21,13 @@ var autoprefixer = require('gulp-autoprefixer'),
 
 // paths
 var styleSrc = 'source/sass/**/*.sass',
-    styleDest = 'build/assets/css/',
+    styleDest = 'public/assets/css/',
     htmlSrc = 'source/',
-    htmlDest = 'build/',
+    htmlDest = 'public/',
     vendorSrc = 'source/js/vendors/',
-    vendorDest = 'build/assets/js/',
+    vendorDest = 'public/assets/js/',
     scriptSrc = 'source/js/*.js',
-    scriptDest = 'build/assets/js/';
+    scriptDest = 'public/assets/js/';
 
 
 // --------------------------------------------
@@ -48,21 +48,21 @@ gulp.task('sass', function () {
         .pipe(rename({
             basename: 'main'
         }))
-        .pipe(gulp.dest('build/assets/css'));
+        .pipe(gulp.dest('public/assets/css'));
 });
 
 
 gulp.task('images', function () {
     gulp.src('source/img/*')
         .pipe(images())
-        .pipe(gulp.dest('build/assets/img'));
+        .pipe(gulp.dest('public/assets/img'));
 });
 
 // transpile Es6 (webpack / babel)
 gulp.task('scripts', function () {
     return gulp.src('source/js/app.js')
         .pipe(webpack(require('./webpack.config.js')))
-        .pipe(gulp.dest('build/assets/js'));
+        .pipe(gulp.dest('public/assets/js'));
 });
 
 //Concat and Compress Vendor .js files
@@ -75,7 +75,7 @@ gulp.task('vendors', function () {
         .pipe(plumber())
         .pipe(concat('vendors.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('build/assets/js'));
+        .pipe(gulp.dest('public/assets/js'));
 });
 
 
@@ -84,7 +84,7 @@ gulp.task('watch', function () {
     // Serve files from the root of this project
     browserSync.init({
         server: {
-            baseDir: "./build"
+            baseDir: "./public"
         },
         notify: false
     });
@@ -92,7 +92,7 @@ gulp.task('watch', function () {
     gulp.watch(styleSrc, ['sass']);
     gulp.watch(scriptSrc, ['scripts']);
     gulp.watch(vendorSrc, ['vendors']);
-    gulp.watch(['build/*.html', 'build/assets/css/*.css', 'build/assets/js/*.js', 'build/assets/js/vendors/*.js']).on('change', browserSync.reload);
+    gulp.watch(['public/*.html', 'public/assets/css/*.css', 'public/assets/js/*.js', 'public/assets/js/vendors/*.js']).on('change', browserSync.reload);
 
 });
 
