@@ -2,8 +2,8 @@
 
 An implementation of a traveler Design using css Grid Layout and AnimeJs
 
-![Traveler Template](https://imgur.com/N3L5zlA)
-![Traveler Tempalte](https://imgur.com/RrTbUI7)
+![Traveler Template](https://i.imgur.com/N3L5zlA.jpg)
+![Traveler Tempalte](https://i.imgur.com/RrTbUI7.jpg)
 
 [Demo](https://traveler-template.firebaseapp.com/)
 
